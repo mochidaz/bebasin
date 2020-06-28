@@ -2,7 +2,7 @@
 
 [![Build Status](https://dev.azure.com/andraantariksa/Bebasin/_apis/build/status/bebasid.bebasin?branchName=master)](https://dev.azure.com/andraantariksa/Bebasin/_build/latest?definitionId=4&branchName=master)
 
-[Read the README in English here](README.en.md)
+[Read README in English](README.en.md)
 
 ---
 
@@ -31,21 +31,21 @@ Silahkan baca [Soal Sering Ditanyakan](FAQ.md) terlebih dahulu.
 
 ## Panduan Singkat
 
-- [Unduh](#unduh) terlebih dahulu.
-- Unzip programnya.
-- Bagi yang menggunakan Linux atau MacOS, beri akses programnya untuk berjalan sebagai *executable*. Anda bisa menjalankan perintah di bawah.
+- [Unduhkan](#unduh) terlebih dahulu.
+- Unzipkan programnya.
+- Yang ada menggunakan Operasi Sistem Linux atau MacOS, berikan akses programnya untuk berjalan sebagai *executable*. Anda bisa menjalankan perintah di bawah.
 
 ```
 sudo chmod +x ./bebasin
 ```
 
-- Buka Program dengan Akses Administrasi.
+- Bukakan Program dengan Akses Root di Linux/MacOS.
 
 ### Windows
 
 ![Run as Administrator di Windows](https://i.imgur.com/p7VstKF.png)
 
-*Run as Administrator* di Windows
+Pilihlan *Run as Administrator* di Windows.
 
 ### Linux/MacOS
 
@@ -58,19 +58,19 @@ sudo ./bebasin
 ![Main Menu](https://i.imgur.com/reZApao.png)
 
 - Tekan "Enter" atau Klik Tombol "Install" dengan Mouse Kiri.
-- Tekan *Confirm* untuk dikonfirmasikan.
+- Tekan *Confirm* atau Klik Tombol "Confirm" dengan Mouse Kiri untuk mengkonfirmasikan Instalasi.
 
 ![Konfirmasi Instalasi](https://i.imgur.com/eZqIQZM.png)
 
-- Bebasin sudah terpasang di Komputer Anda.
+- Bebasin akan sudah dipasang Komputer Anda.
 
 ![Instalasi Selesai](https://i.imgur.com/3NVCBJ6.png)
 
-- Terakhir, Anda tinggal menyalakan ulang Komputer Anda.
+- Terakhirnya, Anda tinggal menyalakan ulang Komputer Anda.
 
 ## Apa Bedanya dengan Bebasid?
 
-- *Terminal User Interface*
+- *Terminal User Interface (TUI)*
 - Lebih Mudah Digunakan
 - Dapat Diperbaharui
 - *Backup* hosts secara otomatis
@@ -80,8 +80,6 @@ sudo ./bebasin
 ## Tangkapan Layar
 
 ![Bebasin di Windows 10](https://i.imgur.com/reZApao.png)
-
-Bebasin di Windows 10
 
 ## Unduh
 
