@@ -126,9 +126,14 @@ jobs:
           git remote set-url origin https://aaabot:${{ secrets.ACCESS_TOKEN }}@github.com/bebasid/bebasin.git
           
           sed -i -E "s/const CURRENT_VERSION: u64 = [0-9]+;/const CURRENT_VERSION: u64 = ${VERSION};/" src/main.rs
-          echo $LATEST_JSON > latest.json
-          git add latest.json src/main.rs
+          echo "src/main.rs source"
+          cat src/main.rs
           
+          echo $LATEST_JSON > latest.json
+          echo "latest.json source"
+          cat latest.json
+          
+          git add latest.json src/main.rs
           git commit -m "Renew md5sum of latest release"
           git push origin master
 
