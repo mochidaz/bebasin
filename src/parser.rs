@@ -1,57 +1,35 @@
-use crate::error::ErrorKind;
+use std::collections::{HashMap, HashSet};
+use std::error::Error;
+use std::fs;
+use std::io;
+use std::io::prelude::*;
+use std::path::Path;
+
 use itertools::Itertools as _;
 use pest::Parser;
-use std::collections::{HashMap, HashSet};
-use std::fs;
-use std::io::prelude::*;
 
-type Hosts = HashMap<String, HashSet<String>>;
+use crate::error::GenericError;
+
+pub(crate) type Hosts = HashMap<String, HashSet<String>>;
 
 #[derive(Parser)]
 #[grammar = "grammar.pest"]
-struct HostsParser;
+pub struct HostsParser;
 
-pub fn write_to_file(file_path: &str, hosts: &Hosts, header: &str) -> Result<(), ErrorKind> {
-    let mut file;
-    match fs::File::create(file_path) {
-        Ok(f) => {
-            file = f;
-        }
-        Err(err) => {
-            return Err(ErrorKind::IOError(err));
-        }
-    };
+pub fn parse_hosts_from_file<P>(file_path: P) -> Result<Hosts, GenericError>
+    where
+        P: AsRef<Path> {
+    let content = fs::read_to_string(file_path)?;
+    let res = parse_hosts_from_str(&content)?;
 
-    let mut hosts_stringify = String::new();
-    hosts_stringify.push_str(header);
-    for host in hosts {
-        let ip = &host.0;
-        let hostnames = &host.1.into_iter().join(" ");
-
-        hosts_stringify.push_str(&format!("{} {}\n", ip, hostnames));
-    }
-
-    match file.write_all(hosts_stringify.as_bytes().as_ref()) {
-        Ok(()) => Ok(()),
-        Err(err) => Err(ErrorKind::IOError(err)),
-    }
+    Ok(res)
 }
 
-pub fn parse_from_file(file_path: &str) -> Result<Hosts, ErrorKind> {
-    match fs::read_to_string(file_path) {
-        Ok(str) => parse_from_str(&str),
-        Err(err) => Err(ErrorKind::IOError(err)),
-    }
-}
-
-pub fn parse_from_str(str: &str) -> Result<Hosts, ErrorKind> {
+pub fn parse_hosts_from_str(str: &str) -> Result<Hosts, pest::error::Error<Rule>> {
     let mut hosts: Hosts = HashMap::new();
-    let res = match HostsParser::parse(Rule::main, str) {
-        Ok(x) => x,
-        Err(err) => return Err(ErrorKind::PestRuleError(err)),
-    };
+    let parse_result = HostsParser::parse(Rule::main, str)?;
 
-    for pair in res {
+    for pair in parse_result {
         if let Rule::statement = pair.as_rule() {
             let mut ip = String::new();
             let mut hostnames: HashSet<String> = HashSet::new();
@@ -75,7 +53,6 @@ pub fn parse_from_str(str: &str) -> Result<Hosts, ErrorKind> {
                     hostnames.into_iter().for_each(|x| {
                         old_val.insert(x);
                     });
-                    // old_val.append(&mut hostnames);
                 }
                 None => {
                     hosts.insert(ip, hostnames);

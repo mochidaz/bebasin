@@ -1,6 +1,9 @@
-use crate::ui;
+use cursive::{Cursive, CursiveExt};
 use cursive::event::Key;
-use cursive::Cursive;
+use cursive::menu::MenuTree;
+use cursive::views::Dialog;
+
+use crate::{REPOSITORY_URL, ui};
 
 pub struct App {
     cursive: Cursive,
@@ -18,10 +21,11 @@ impl App {
         self.cursive.add_global_callback(Key::Esc, Cursive::quit);
     }
 
-    pub fn dispatch(&mut self) {
+    pub fn run(&mut self) {
         self.set_global_callback();
 
         ui::main(&mut self.cursive);
+
         self.cursive.run();
     }
 }

@@ -23,3 +23,4 @@ impl<K: std::cmp::Eq + std::hash::Hash, V: std::cmp::Eq + std::hash::Hash> Appen
         Ok(())
     }
 }
+

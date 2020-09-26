@@ -1,20 +1,24 @@
-use crate::error::ErrorKind;
-use crate::os::{HOSTS_BACKUP_PATH, HOSTS_PATH};
-use crate::parser::{parse_from_file, parse_from_str, write_to_file};
-use crate::{updater, CURRENT_VERSION, HOSTS_BEBASIN, HOSTS_HEADER, REPOSITORY_URL};
-
-use cursive::views::{Button, Dialog, DummyView, LinearLayout, TextView};
-use cursive::Cursive;
-
-use crate::helpers::AppendableMap;
-use crate::updater::{backup, is_backed, is_installed};
+use std::error::Error;
 use std::fs;
+use std::sync::{Arc, Mutex};
+use std::thread;
+
+use cursive::Cursive;
+use cursive::views::{Button, Dialog, DummyView, LinearLayout, TextView};
+
+use crate::{CURRENT_VERSION, HOSTS_BEBASIN, HOSTS_HEADER, REPOSITORY_URL, updater};
+use crate::error::{GenericError, ThreadError};
+use crate::helpers::AppendableMap;
+use crate::os::{HOSTS_BACKUP_PATH, HOSTS_PATH};
+use crate::parser::{parse_hosts_from_file, parse_hosts_from_str};
+use crate::updater::{backup, is_backed, is_installed};
+use crate::writer::write_hosts_to_file;
 
 fn clear_layer(cursive: &mut Cursive) {
     while cursive.pop_layer().is_some() {}
 }
 
-fn error(cursive: &mut Cursive, err: ErrorKind) {
+fn error(cursive: &mut Cursive, err: GenericError) {
     cursive.pop_layer();
 
     cursive.add_layer(
@@ -32,16 +36,15 @@ fn install(cursive: &mut Cursive) {
     cursive.add_layer(box_layout);
 
     if !is_backed() {
-        let backup_result = backup();
-        if backup_result.is_err() {
-            error(cursive, backup_result.err().unwrap());
+        if let Err(err) = backup() {
+            error(cursive, err.into());
             return;
         }
     }
 
-    match parse_from_str(HOSTS_BEBASIN) {
+    match parse_hosts_from_str(HOSTS_BEBASIN) {
         Ok(mut hosts_bebasin) => {
-            match parse_from_file(HOSTS_BACKUP_PATH) {
+            match parse_hosts_from_file(HOSTS_BACKUP_PATH) {
                 Ok(hosts_backup) => {
                     hosts_bebasin.append(hosts_backup);
                     cursive.pop_layer();
@@ -51,39 +54,39 @@ fn install(cursive: &mut Cursive) {
                     merge your hosts file with\n\
                     Bebasin hosts?",
                     )
-                    .title("Confirmation")
-                    .button("Confirm", move |cursive| {
-                        match write_to_file(HOSTS_PATH, &hosts_bebasin, HOSTS_HEADER) {
-                            Err(err) => {
-                                cursive.add_layer(
-                                    Dialog::text(err.to_string()).title("Error").button(
-                                        "Ok",
-                                        |cursive| {
-                                            cursive.pop_layer();
-                                            cursive.pop_layer();
-                                        },
-                                    ),
-                                );
-                            }
-                            _ => {
-                                cursive.add_layer(
-                                    Dialog::text(
-                                        "The hosts file has been updated,\n\
+                        .title("Confirmation")
+                        .button("Confirm", move |cursive| {
+                            match write_hosts_to_file(HOSTS_PATH, &hosts_bebasin, HOSTS_HEADER) {
+                                Err(err) => {
+                                    cursive.add_layer(
+                                        Dialog::text(err.to_string()).title("Error").button(
+                                            "Ok",
+                                            |cursive| {
+                                                cursive.pop_layer();
+                                                cursive.pop_layer();
+                                            },
+                                        ),
+                                    );
+                                }
+                                _ => {
+                                    cursive.add_layer(
+                                        Dialog::text(
+                                            "The hosts file has been updated,\n\
                         Please restart your machine",
-                                    )
-                                    .title("Done")
-                                    .button("Ok", |cursive| {
-                                        // Re-create the main menu
-                                        clear_layer(cursive);
-                                        main(cursive);
-                                    }),
-                                );
-                            }
-                        };
-                    })
-                    .button("Cancel", |cursive| {
-                        cursive.pop_layer();
-                    });
+                                        )
+                                            .title("Done")
+                                            .button("Ok", |cursive| {
+                                                // Re-create the main menu
+                                                clear_layer(cursive);
+                                                main(cursive);
+                                            }),
+                                    );
+                                }
+                            };
+                        })
+                        .button("Cancel", |cursive| {
+                            cursive.pop_layer();
+                        });
 
                     cursive.add_layer(box_layout);
                 }
@@ -93,7 +96,7 @@ fn install(cursive: &mut Cursive) {
             };
         }
         Err(err) => {
-            error(cursive, err);
+            error(cursive, GenericError::from(err));
         }
     };
 }
@@ -103,14 +106,14 @@ fn uninstall_finish(cursive: &mut Cursive) {
         "The hosts file has been updated,\n\
         Please restart your network/machine",
     )
-    .title("Done")
-    .button("Ok", |cursive| {
-        cursive.pop_layer();
+        .title("Done")
+        .button("Ok", |cursive| {
+            cursive.pop_layer();
 
-        // Re-create the main menu
-        clear_layer(cursive);
-        main(cursive);
-    });
+            // Re-create the main menu
+            clear_layer(cursive);
+            main(cursive);
+        });
 
     cursive.add_layer(layer);
 }
@@ -120,41 +123,34 @@ fn uninstall(cursive: &mut Cursive) {
         "Are you sure you want to\n\
         uninstall Bebasin hosts?",
     )
-    .title("Confirmation")
-    .button("Confirm", move |cursive| {
-        // 1. Copy the backup to the real hosts
-        // 2. Delete the backup
-        // 3, Remove all temporary file
-        match fs::copy(HOSTS_BACKUP_PATH, HOSTS_PATH) {
-            Ok(_) => {
-                updater::remove_temp_file();
-
-                match fs::remove_file(HOSTS_BACKUP_PATH) {
-                    Err(err) => return error(cursive, ErrorKind::IOError(err)),
-                    _ => {}
-                };
-
+        .title("Confirmation")
+        .button("Confirm", move |cursive| {
+            // 1. Copy the backup to the real hosts
+            // 2. Delete the backup
+            // 3, Remove all temporary file
+            if let Err(err) = crate::core::uninstall() {
+                error(cursive, GenericError::from(err));
+            } else {
                 uninstall_finish(cursive);
             }
-            Err(err) => error(cursive, ErrorKind::IOError(err)),
-        };
-    })
-    .button("Cancel", |cursive| {
-        cursive.pop_layer();
-    });
+        })
+        .button("Cancel", |cursive| {
+            cursive.pop_layer();
+        });
 
     cursive.add_layer(box_layout);
 }
 
-fn open_browser(cursive: &mut Cursive, url: &str) {
-    if webbrowser::open(url).is_err() {
-        let layout = Dialog::text("Can't open any browser")
+pub(crate) fn open_browser(cursive: &mut Cursive, url: &str) {
+    if let Err(err) = webbrowser::open(url) {
+        ;
+        cursive.add_layer(Dialog::text(
+            format!("Can't open any browser\nReason: {}", err.to_string())
+        )
             .title("Error")
             .button("Ok", |cursive| {
                 cursive.pop_layer();
-            });
-
-        cursive.add_layer(layout);
+            }));
     }
 }
 
@@ -169,7 +165,7 @@ fn update(cursive: &mut Cursive) {
         Ok(latest) => latest,
         Err(err) => {
             return {
-                error(cursive, err);
+                error(cursive, err.into());
             };
         }
     };
@@ -190,21 +186,43 @@ fn update(cursive: &mut Cursive) {
         "Are you sure you want to update to version {}?",
         latest.version
     ))
-    .title("Confirmation")
-    .button("No", |cursive| {
-        cursive.pop_layer();
-    })
-    .button("Yes", move |cursive| match updater_instance.update() {
-        Ok(_) => {
-            let updated_layer =
-                Dialog::text("The application has been updated, please re-run the application")
-                    .button("Ok", |cursive| {
-                        cursive.quit();
-                    });
-            cursive.add_layer(updated_layer);
-        }
-        Err(err) => error(cursive, err),
-    });
+        .title("Confirmation")
+        .button("No", |cursive| {
+            cursive.pop_layer();
+        })
+        .button("Yes", move |cursive| {
+            let update_err = Arc::new(Mutex::<Option<Result<(), GenericError>>>::new(None));
+
+            let spawned_thread = thread::Builder::new()
+                .name("update".into())
+                .spawn(|| {
+                    crate::updater::Updater::get_release_data();
+                });
+
+            if let Ok(handle) = spawned_thread {
+                cursive.add_layer(
+                    Dialog::text("Updating the application")
+                        .title("Loading...")
+                );
+
+                if let Err(_) = handle.join() {
+                    error(cursive, GenericError::ThreadError(ThreadError("Error joining the thread".into())));
+                    return;
+                } else {
+                    cursive.pop_layer();
+                    cursive.add_layer(
+                        Dialog::text("The application has been updated, please re-run the application")
+                            .title("Success")
+                            .button("Quit", |cursive| {
+                                cursive.quit();
+                            })
+                    );
+                }
+            } else {
+                // Do sequentially
+                // updater_instance::update();
+            }
+        });
     cursive.add_layer(confirmation_layer);
 }
 
@@ -220,8 +238,9 @@ pub fn main(cursive: &mut Cursive) {
 
     menu_buttons = menu_buttons
         .child(Button::new("Update", update))
+        .child(DummyView)
         .child(Button::new("Repository", |cursive| {
-            open_browser(cursive, REPOSITORY_URL);
+            crate::ui::open_browser(cursive, REPOSITORY_URL);
         }))
         .child(Button::new("Report a problem", |cursive| {
             let repository_create_issue_url = &format!("{}/issues/new", REPOSITORY_URL);
@@ -236,7 +255,7 @@ pub fn main(cursive: &mut Cursive) {
             .child(DummyView)
             .child(menu_buttons),
     )
-    .title("Menu");
+        .title("Menu");
 
     cursive.add_layer(layout);
 }
