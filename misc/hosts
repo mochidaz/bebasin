@@ -3,27 +3,16 @@
 # Hosts ditulis oleh Komunitas Internet Netral
 # Dengan mengunduh BEBASID dan menggunakan aplikasi ini berarti menerima dan setuju untuk terikat dan mematuhi ketentuan yang berada di dalam halaman berikut: https://github.com/bebasid/bebasid/blob/master/RULES.md
 
-# [OPTIONAL]
-# [Hapus '# ' untuk mengaplikasikan secara manual atau gunakan ekstensi untuk mengaplikasikan secara otomatis]
+# Optional
+# Hapus '# ' untuk mengaplikasikan secara manual atau gunakan ekstensi untuk mengaplikasikan secara otomatis
 
 # [Matikan fitur SafeSearch Google dan Youtube]
 # 216.58.211.3 google.com
 # 216.58.211.3 www.google.com
 # 216.58.211.3 google.co.id
 # 216.58.211.3 www.google.co.id
-# 0.0.0.0 forcesafesearch.google.com
-# 0.0.0.0 restrict.youtube.com
-
-# [BLOCK INTERNET POSITIF]
-# 0.0.0.0 cfs.uzone.id
-# 0.0.0.0 internetpositif.uzone.id
-# 0.0.0.0 uzone.id
-# 0.0.0.0 cfs2.uzone.id
-# 0.0.0.0 u-ad.info
-# 0.0.0.0 cfs.u-ad.info
-# 0.0.0.0 cfs2.uadexchange.com
-# 0.0.0.0 www.internetpositif.uzone.id
-# 0.0.0.0 www.uzone.id
+# 127.0.0.1 forcesafesearch.google.com
+# 127.0.0.1 restrict.youtube.com
 
 # [MacOS localhost]
 # 127.0.0.1 localhost
@@ -50,6 +39,74 @@
 # [dnslify]
 185.235.81.1 doh.dnslify.com
 2a0d:4d00:81::1 doh.dnslify.com
+
+# Blokir Trackers
+
+# [Indihome]
+127.0.0.1 a01.uadexchange.com
+127.0.0.1 a02.uadexchange.com
+127.0.0.1 a03.uadexchange.com
+127.0.0.1 a04.uadexchange.com
+127.0.0.1 a05.uadexchange.com
+127.0.0.1 block.uzone.id
+127.0.0.1 cdn1.uzone.id
+127.0.0.1 cdn2.uzone.id
+127.0.0.1 cdn3.uzone.id
+127.0.0.1 cdn4.uzone.id
+127.0.0.1 cdn5.uzone.id
+127.0.0.1 cdn6.uzone.id
+127.0.0.1 cdn7.uzone.id
+127.0.0.1 cfs.u-ad.info
+127.0.0.1 cfs.uzone.id
+127.0.0.1 cfs2.uadexchange.com
+127.0.0.1 cfs2.uzone.id
+127.0.0.1 csf.uzone.id
+127.0.0.1 d01.notifa.info
+127.0.0.1 d31qbv1cthcecs.cloudfront.net
+127.0.0.1 d5nxst8fruw4z.cloudfront.net
+127.0.0.1 das.uadexchange.com
+127.0.0.1 digiads.co.id
+127.0.0.1 digilife.uzone.id
+127.0.0.1 expose.uzone.id
+127.0.0.1 food.uzone.id
+127.0.0.1 internetpositif.uzone.id
+127.0.0.1 js.digiads.co.id
+127.0.0.1 kendedes.uzone.id
+127.0.0.1 mercusuar.uzone.id
+127.0.0.1 news.uzone.id
+127.0.0.1 notifa.info
+127.0.0.1 p01.notifa.info
+127.0.0.1 p02.notifa.info
+127.0.0.1 p03.notifa.info
+127.0.0.1 p04.notifa.info
+127.0.0.1 p05.notifa.info
+127.0.0.1 terbaru.uzone.id
+127.0.0.1 terpopuler.uzone.id
+127.0.0.1 u-ad.info
+127.0.0.1 uadexchange.com
+127.0.0.1 upoint.id
+127.0.0.1 usearch.co.id
+127.0.0.1 uzone.id
+127.0.0.1 v3.mercusuar.uzone.id
+127.0.0.1 welcome.indihome.co.id
+127.0.0.1 www.digiads.co.id
+127.0.0.1 www.notifa.info
+127.0.0.1 www.u-ad.info
+127.0.0.1 www.uadexchange.com
+127.0.0.1 www.upoint.id
+127.0.0.1 www.usearch.co.id
+127.0.0.1 www.uzone.id
+127.0.0.1 www.x-tags.net
+127.0.0.1 x-tags.net
+
+# [Telkomsel]
+127.0.0.1 ads.telkomsel.com
+
+# [XL]
+127.0.0.1 ibnads.xl.co.id
+
+# [Indosat]
+127.0.0.1 ads.indosatooredoo.com
 
 # Mulai hosts bebasid
 
@@ -171,10 +228,7 @@
 151.101.53.140 i.redd.it
 151.101.65.140 styles.reddit.com
 151.101.65.140 aib.reddit.com
-
-# [twitter.com]
-93.184.220.70 pbs.twimg.com
-192.229.210.163 video.twimg.com
+151.101.41.140 layers-svc.reddit.com
 
 # [vimeo.com]
 151.101.50.109 i.vimeocdn.com
@@ -221,17 +275,19 @@
 104.24.190.20 thepiratebay.org www.thepiratebay.org
 
 # [hitomi.la]
-178.17.174.221 hitomi.la www.hitomi.la
-23.237.107.210 a.hitomi.la aa.hitomi.la atn.hitomi.la ba.hitomi.la btn.hitomi.la ca.hitomi.la
-23.237.107.210 ltn.hitomi.la streaming.hitomi.la tn.hitomi.la hf2.hitomi.la ctn.hitomi.la g.hitomi.la
+23.237.107.210 streaming.hitomi.la a.hitomi.la aa.hitomi.la btn.hitomi.la atn.hitomi.la hf3.hitomi.la la.hitomi.la 0tn.hitomi.la 0a.hitomi.la af.hitomi.la f.hitomi.la c.hitomi.la d.hitomi.la e.hitomi.la b.hitomi.la ag.hitomi.la i.hitomi.la g.hitomi.la
+23.237.36.202 hf1.hitomi.la ba.hitomi.la dev.hitomi.la ab.hitomi.la ac.hitomi.la ad.hitomi.la ae.hitomi.la ah.hitomi.la ai.hitomi.la h.hitomi.la lb.hitomi.la lc.hitomi.la ld.hitomi.la le.hitomi.la lf.hitomi.la lg.hitomi.la lh.hitomi.la li.hitomi.la
+192.240.120.10 ltn.hitomi.la hf2.hitomi.la tn.hitomi.la ca.hitomi.la ctn.hitomi.la
+78.142.29.56 hitomi.la
 
 # [nhentai.net]
-104.27.195.88 nhentai.net www.nhentai.net static.nhentai.net
-198.255.82.50 i2.nhentai.net t2.nhentai.net
-185.165.243.200 t5.nhentai.net i5.nhentai.net i.nhentai.net
-185.165.243.201 t7.nhentai.net i7.nhentai.net webseed.nhentai.net t.nhentai.net
+104.27.195.88 nhentai.net tracker.nhentai.net
+104.27.194.88 www.nhentai.net static.nhentai.net
 66.6.44.4 blog.nhentai.net
-104.27.131.13 nhent.ai
+198.255.82.50 i.nhentai.net
+185.177.127.78 i7.nhentai.net t7.nhentai.net
+185.177.127.77 i5.nhentai.net t5.nhentai.net webseed.nhentai.net t.nhentai.net
+
 
 # [gelbooru.com]
 67.202.114.141 gelbooru.com www.gelbooru.com
@@ -240,8 +296,10 @@
 23.227.197.10 img3.gelbooru.com
 
 # [omegle.com]
-104.23.128.76 omegle.com
-104.23.128.76 www.omegle.com
+104.23.142.25 omegle.com
+104.23.140.25 www.omegle.com
+72.14.176.197 log.omegle.com logs.omegle.com
+52.216.177.170 i.omegle.com
 
 # [rarbg.to]
 185.37.100.122 rarbg.to
@@ -348,46 +406,378 @@
 104.20.135.21 lofi.e-hentai.org
 
 # [xvideos.com]
-185.88.181.2 it.xvideos.com jp.xvideos.com video.xvideos.com porn000.xvideos.com img100-210.xvideos.com img100-510.xvideos.com porn610.xvideos.com img100-120.xvideos.com img100-420.xvideos.com img100-920.xvideos.com img100-130.xvideos.com img100330.xvideos.com img100-530.xvideos.com img100-940.xvideos.com img100-950.xvideos.com img100-660.xvideos.com img100-960.xvideos.com img100-370.xvideos.com img100080.xvideos.com img100-690.xvideos.com porn201.xvideos.com porn801.xvideos.com img100-311.xvideos.com img100-411.xvideos.com chat-private-connection11.xvideos.com 121.xvideos.com porn031.xvideos.com img100-541.xvideos.com img100-051.xvideos.com 851.xvideos.com img100-461.xvideos.com img100271.xvideos.com img100-571.xvideos.com img100-671.xvideos.com img100-881.xvideos.com img100-981.xvideos.com porn091.xvideos.com 291.xvideos.com img100-991.xvideos.com img100-002.xvideos.com img100-602.xvideos.com 
-185.88.181.6 de.xvideos.com fr.xvideos.com 321.xvideos.com hw.xvideos.com info.xvideos.com en.xvideos.com l1.xvideos.com 500.xvideos.com img100-600.xvideos.com porn600.xvideos.com	img100-410.xvideos.com img100020.xvideos.com img100-620.xvideos.com porn230.xvideos.com img100-330.xvideos.com xv140.xvideos.com img100-340.xvideos.com porn740.xvideos.com 50.xvideos.com img100-450.xvideos.com img100-550.xvideos.com img100-650.xvideos.com porn060.xvideos.com img100-260.xvideos.com img100-360.xvideos.com img100-560.xvideos.com img100-760.xvideos.com porn470.xvideos.com img100-980.xvideos.com img100-390.xvideos.com img100-790.xvideos.com img100-301.xvideos.com img100-601.xvideos.com chat-private-connection111.xvideos.com img100-511.xvideos.com img100-021.xvideos.com xv121.xvideos.com img100-331.xvideos.com img100-731.xvideos.com chat-private-connection31.xvideos.com porn351.xvideos.com img100-261.xvideos.com img100-561.xvideos.com porn171.xvideos.com img100-271.xvideos.com img100-771.xvideos.com img100-781.xvideos.com img100-191.xvideos.com chat-private-connection112.xvideos.com 	img100-712.xvideos.com img100-422.xvideos.com image100-700.xvideos.com image100-510.xvideos.com 
-185.88.181.9 s.xvideos.com vid.xvideos.com upload.xvideos.com img100-000.xvideos.com porn100.xvideos.com xv500.xvideos.com img100700.xvideos.com chat-private-connection210.xvideos.com img100310.xvideos.com 220.xvideos.com img100-630.xvideos.com img100-740.xvideos.com img100-050.xvideos.com img100-460.xvideos.com porn170.xvideos.com img100-270.xvideos.com img100-670.xvideos.com img100880.xvideos.com porn590.xvideos.com porn101.xvideos.com img100601.xvideos.com img100-421.xvideos.com img100-031.xvideos.com img100-131.xvideos.com img100-941.xvideos.com chat-private-connection41.xvideos.com img100-851.xvideos.com img100-951.xvideos.com porn271.xvideos.com img100181.xvideos.com porn281.xvideos.com img100-481.xvideos.com img100-691.xvideos.com mail1.xvideos.com ns1.xvideos.com dns1.xvideos.com xv102.xvideos.com img100-802.xvideos.com 812.xvideos.com img100-812.xvideos.com 122.xvideos.com img100-122.xvideos.com porn322.xvideos.com content.admin.xvideos.com image100-200.xvideos.com image100-600.xvideos.com image100-800.xvideos.com  image100-220.xvideos.com 
-185.88.181.8 www.xvideos.com 628.xvideos.com l16.xvideos.com 	704.xvideos.com img100-400.xvideos.com xv210.xvideos.com img100-310.xvideos.com img100-810.xvideos.com img100320.xvideos.com 720.xvideos.com img100-430.xvideos.com img100-160.xvideos.com img100-860.xvideos.com porn960.xvideos.com 480.xvideos.com porn390.xvideos.com porn890.xvideos.com img100-401.xvideos.com img100-801.xvideos.com img100-211.xvideos.com xv11.xvideos.com img100-531.xvideos.com img100-631.xvideos.com porn631.xvideos.com img100-841.xvideos.com img100-161.xvideos.com porn461.xvideos.com img100-071.xvideos.com img100-371.xvideos.com img100-181.xvideos.com img100-402.xvideos.com img100-212.xvideos.com porn412.xvideos.com chat-private-connection12.xvideos.com porn222.xvideos.com img100-622.xvideos.com porn622.xvideos.com  image100-310.xvideos.com 
-185.88.181.4 hls.xvideos.com flashservice.xvideos.com copyright.xvideos.com porn200.xvideos.com img100-300.xvideos.com chat-private-connection110.xvideos.com img100-710.xvideos.com img100-520.xvideos.com xv130.xvideos.com img100-140.xvideos.com img100-850.xvideos.com img100-060.xvideos.com img100-380.xvideos.com img100-880.xvideos.com img100-590.xvideos.com img100-990.xvideos.com porn001.xvideos.com img100-711.xvideos.com img100-321.xvideos.com chat-private-connection21.xvideos.com img100-141.xvideos.com img100-241.xvideos.com img100-741.xvideos.com porn151.xvideos.com	251.xvideos.com img100-651.xvideos.com img100071.xvideos.com img100-171.xvideos.com img100-871.xvideos.com porn081.xvideos.com img100-091.xvideos.com img100091.xvideos.com img100-491.xvideos.com img100-322.xvideos.com admin-copyright.xvideos.com
-185.88.181.5 752.xvideos.com l3.xvideos.com img100213.xvideos.com img100-610.xvideos.com porn810.xvideos.com img100-910.xvideos.com img100-020.xvideos.com img100430.xvideos.com porn630.xvideos.com img100-730.xvideos.com img100-930.xvideos.com xv150.xvideos.com img100-350.xvideos.com img100-680.xvideos.com porn880.xvideos.com img100-290.xvideos.com img100-101.xvideos.com img100-911.xvideos.com porn221.xvideos.com img100-521.xvideos.com 621.xvideos.com img100-431.xvideos.com img100-151.xvideos.com img100-761.xvideos.com img100171.xvideos.com img100571.xvideos.com 281.xvideos.com img100281.xvideos.com img100-381.xvideos.com img100-581.xvideos.com porn291.xvideos.com img100-791.xvideos.com img100-302.xvideos.com img100-502.xvideos.com porn712.xvideos.com img100-522.xvideos.com
-185.88.181.11	l2.xvideos.com xvideos.com 100.xvideos.com img100-900.xvideos.com porn900.xvideos.com	 chat-private-connection510.xvideos.com img100-320.xvideos.com img100-830.xvideos.com porn440.xvideos.com img100-640.xvideos.com img100-250.xvideos.com img100060.xvideos.com img100-870.xvideos.com img100-280.xvideos.com img100-480.xvideos.com img100480.xvideos.com img100-190.xvideos.com xv90.xvideos.com img100-701.xvideos.com img100701.xvideos.com img100-011.xvideos.com img100-811.xvideos.com img100-121.xvideos.com img100-821.xvideos.com img100-931.xvideos.com img100-641.xvideos.com 100-561.xvideos.com img100-861.xvideos.com porn371.xvideos.com img100-471.xvideos.com 881.xvideos.com img100-291.xvideos.com www.ww1.xvideos.com 302.xvideos.com img100-702.xvideos.com img100-902.xvideos.com 
-185.120.69.181 face-rec.xvideos.com reports.face-rec.xvideos.com images.face-rec.xvideos.com dev.face-rec.xvideos.com www.www--xvideos.com www--xvideos.com
-185.88.181.9 321.xvideos.com flashservice.xvideos.com info.xvideos.com jp.xvideos.com vid.xvideos.com l1.xvideos.com img100-321.xvideos.com
-185.88.181.3 upload.xvideos.com m.xvideos.com l3.xvideos.com flashembed.xvideos.com support.xvideos.com content.admin.xvideos.com
-178.79.221.26 porn.im.4e2e4000.8690770.x.xvideos.com porn.im.52d06500.20431419.x.xvideos.com
-178.79.221.65 porn.im.4e2e4000.6878056.x.xvideos.com porn.im.1f3369e2.938329.x.xvideos.com
-208.111.181.242 porn.im.18ccd858.370047.x.xvideos.com porn.im.187241ee.370047.x.xvideos.com
-185.88.181.10 hw.xvideos.com hls.xvideos.com 532.xvideos.com 345.xvideos.com
-185.88.181.11 de.xvideos.com video.xvideos.com admin-copyright.xvideos.com
-185.88.181.2 www.xvideos.com 870.xvideos.com xvideos.com
-185.88.181.7 it.xvideos.com img100-269.xvideos.com 752.xvideos.com
-185.88.181.4 l2.xvideos.com egc.xvideos.com s.xvideos.com
-209.197.3.84 img-hw.xvideos.com static-hw.xvideos.com
-141.0.175.10 links.xvideos.com links.news.xvideos.com
-69.55.57.146 control.xvideos.com mail.support.xvideos.com
-178.79.221.32 download.im.294b5600.22393761.x.xvideos.com
-178.79.221.67 download.im.8d00ad7a.63493.x.xvideos.com
+185.88.181.2 de.xvideos.com
+185.88.181.3 fr.xvideos.com
+185.88.181.5 321.xvideos.com
+185.88.181.6 hw.xvideos.com
+185.88.181.6 info.xvideos.com
+185.88.181.3 en.xvideos.com
+185.88.181.3 l1.xvideos.com
+185.88.181.3 500.xvideos.com
+185.88.181.3 img100-600.xvideos.com
+185.88.181.11 porn600.xvideos.com
+185.88.181.11 img100-410.xvideos.com
+185.88.181.5 img100020.xvideos.com
+185.88.181.4 img100-620.xvideos.com
+185.88.181.4 porn230.xvideos.com
+185.88.181.4 img100-330.xvideos.com
+185.88.181.2 xv140.xvideos.com
+185.88.181.2 img100-340.xvideos.com
+185.88.181.5 porn740.xvideos.com
+185.88.181.5 50.xvideos.com
+185.88.181.5 img100-450.xvideos.com
+185.88.181.5 img100-550.xvideos.com
+185.88.181.5 img100-650.xvideos.com
+185.88.181.3 porn060.xvideos.com
+185.88.181.3 img100-260.xvideos.com
+185.88.181.3 img100-360.xvideos.com
+185.88.181.2 img100-560.xvideos.com
+185.88.181.3 img100-760.xvideos.com
+185.88.181.3 porn470.xvideos.com
+185.88.181.9 img100-980.xvideos.com
+185.88.181.10 img100-390.xvideos.com
+185.88.181.10 img100-790.xvideos.com
+185.88.181.10 img100-301.xvideos.com
+185.88.181.10 img100-601.xvideos.com
+185.88.181.10 chat-private-connection111.xvideos.com
+185.88.181.10 img100-511.xvideos.com
+185.88.181.10 img100-021.xvideos.com
+185.88.181.11 xv121.xvideos.com
+185.88.181.11 img100-331.xvideos.com
+185.88.181.8 img100-731.xvideos.com
+185.88.181.8 chat-private-connection31.xvideos.com
+185.88.181.2 porn351.xvideos.com
+185.88.181.2 img100-261.xvideos.com
+185.88.181.2 img100-561.xvideos.com
+185.88.181.2 porn171.xvideos.com
+185.88.181.2 img100-271.xvideos.com
+185.88.181.2 img100-771.xvideos.com
+185.88.181.2 img100-781.xvideos.com
+185.88.181.2 img100-191.xvideos.com
+185.88.181.2 chat-private-connection112.xvideos.com
+185.88.181.7 img100-712.xvideos.com
+185.88.181.3 img100-422.xvideos.com
+185.88.181.2 s.xvideos.com
+185.88.181.2 vid.xvideos.com
+185.88.181.6 upload.xvideos.com
+185.88.181.6 img100-000.xvideos.com
+185.88.181.8 porn100.xvideos.com
+185.88.181.8 xv500.xvideos.com
+185.88.181.8 img100700.xvideos.com
+185.88.181.9 chat-private-connection210.xvideos.com
+185.88.181.5 img100310.xvideos.com
+185.88.181.5 220.xvideos.com
+185.88.181.9 img100-630.xvideos.com
+185.88.181.9 img100-740.xvideos.com
+185.88.181.9 img100-050.xvideos.com
+185.88.181.9 img100-460.xvideos.com
+185.88.181.6 porn170.xvideos.com
+185.88.181.11 img100-270.xvideos.com
+185.88.181.11 img100-670.xvideos.com
+185.88.181.11 img100880.xvideos.com
+185.88.181.11 porn590.xvideos.com
+185.88.181.7 porn101.xvideos.com
+185.88.181.7 img100601.xvideos.com
+185.88.181.2 img100-421.xvideos.com
+185.88.181.2 img100-031.xvideos.com
+185.88.181.6 img100-131.xvideos.com
+185.88.181.6 img100-941.xvideos.com
+185.88.181.6 chat-private-connection41.xvideos.com
+185.88.181.6 img100-851.xvideos.com
+185.88.181.3 img100-951.xvideos.com
+185.88.181.3 porn271.xvideos.com
+185.88.181.3 img100181.xvideos.com
+185.88.181.2 porn281.xvideos.com
+185.88.181.2 img100-481.xvideos.com
+185.88.181.2 img100-691.xvideos.com
+185.88.181.2 mail1.xvideos.com
+185.88.181.4 ns1.xvideos.com
+185.88.181.11 dns1.xvideos.com
+185.88.181.11 xv102.xvideos.com
+185.88.181.11 img100-802.xvideos.com
+185.88.181.3 812.xvideos.com
+185.88.181.3 img100-812.xvideos.com
+185.88.181.9 122.xvideos.com
+185.88.181.4 img100-122.xvideos.com
+185.88.181.4 porn322.xvideos.com
+185.88.181.4 content.admin.xvideos.com
+185.88.181.4 it.xvideos.com
+185.88.181.4 jp.xvideos.com
+185.88.181.4 video.xvideos.com
+185.88.181.4 porn000.xvideos.com
+185.88.181.5 img100-210.xvideos.com
+185.88.181.9 img100-510.xvideos.com
+185.88.181.9 porn610.xvideos.com
+185.88.181.11 img100-120.xvideos.com
+185.88.181.11 img100-420.xvideos.com
+185.88.181.4 img100-920.xvideos.com
+185.88.181.9 img100-130.xvideos.com
+185.88.181.9 img100330.xvideos.com
+185.88.181.9 img100-530.xvideos.com
+185.88.181.9 img100-940.xvideos.com
+185.88.181.9 img100-950.xvideos.com
+185.88.181.9 img100-660.xvideos.com
+185.88.181.9 img100-960.xvideos.com
+185.88.181.4 img100-370.xvideos.com
+185.88.181.6 img100080.xvideos.com
+185.88.181.6 img100-690.xvideos.com
+185.88.181.7 porn201.xvideos.com
+185.88.181.3 porn801.xvideos.com
+185.88.181.3 img100-311.xvideos.com
+185.88.181.4 img100-411.xvideos.com
+185.88.181.5 chat-private-connection11.xvideos.com
+185.88.181.6 121.xvideos.com
+185.88.181.4 porn031.xvideos.com
+185.88.181.4 img100-541.xvideos.com
+185.88.181.10 img100-051.xvideos.com
+185.88.181.10 851.xvideos.com
+185.88.181.8 img100-461.xvideos.com
+185.88.181.7 img100271.xvideos.com
+185.88.181.7 img100-571.xvideos.com
+185.88.181.7 img100-671.xvideos.com
+185.88.181.7 img100-881.xvideos.com
+185.88.181.7 img100-981.xvideos.com
+185.88.181.7 porn091.xvideos.com
+185.88.181.6 291.xvideos.com
+185.88.181.10 img100-991.xvideos.com
+185.88.181.10 img100-002.xvideos.com
+185.88.181.10 img100-602.xvideos.com
+185.88.181.10 www.xvideos.com
+185.88.181.10 628.xvideos.com
+185.88.181.4 l16.xvideos.com
+185.88.181.4 704.xvideos.com
+185.88.181.4 img100-400.xvideos.com
+185.88.181.4 xv210.xvideos.com
+185.88.181.9 img100-310.xvideos.com
+185.88.181.4 img100-810.xvideos.com
+185.88.181.4 img100320.xvideos.com
+185.88.181.4 720.xvideos.com
+185.88.181.4 img100-430.xvideos.com
+185.88.181.4 img100-160.xvideos.com
+185.88.181.4 img100-860.xvideos.com
+185.88.181.4 porn960.xvideos.com
+185.88.181.8 480.xvideos.com
+185.88.181.8 porn390.xvideos.com
+185.88.181.8 porn890.xvideos.com
+185.88.181.8 img100-401.xvideos.com
+185.88.181.8 img100-801.xvideos.com
+185.88.181.8 img100-211.xvideos.com
+185.88.181.8 xv11.xvideos.com
+185.88.181.7 img100-531.xvideos.com
+185.88.181.5 img100-631.xvideos.com
+185.88.181.5 porn631.xvideos.com
+185.88.181.5 img100-841.xvideos.com
+185.88.181.9 img100-161.xvideos.com
+185.88.181.9 porn461.xvideos.com
+185.88.181.10 img100-071.xvideos.com
+185.88.181.10 img100-371.xvideos.com
+185.88.181.10 img100-181.xvideos.com
+185.88.181.10 img100-402.xvideos.com
+185.88.181.10 img100-212.xvideos.com
+185.88.181.10 porn412.xvideos.com
+185.88.181.10 chat-private-connection12.xvideos.com
+185.88.181.10 porn222.xvideos.com
+185.88.181.3 img100-622.xvideos.com
+185.88.181.2 porn622.xvideos.com
+185.88.181.7 hls.xvideos.com
+185.88.181.8 flashservice.xvideos.com
+185.88.181.8 copyright.xvideos.com
+185.88.181.3 porn200.xvideos.com
+185.88.181.6 img100-300.xvideos.com
+185.88.181.4 chat-private-connection110.xvideos.com
+185.88.181.5 img100-710.xvideos.com
+185.88.181.5 img100-520.xvideos.com
+185.88.181.10 xv130.xvideos.com
+185.88.181.10 img100-140.xvideos.com
+185.88.181.2 img100-850.xvideos.com
+185.88.181.2 img100-060.xvideos.com
+185.88.181.2 img100-380.xvideos.com
+185.88.181.2 img100-880.xvideos.com
+185.88.181.2 img100-590.xvideos.com
+185.88.181.2 img100-990.xvideos.com
+185.88.181.2 porn001.xvideos.com
+185.88.181.4 img100-711.xvideos.com
+185.88.181.4 img100-321.xvideos.com
+185.88.181.4 chat-private-connection21.xvideos.com
+185.88.181.2 img100-141.xvideos.com
+185.88.181.2 img100-241.xvideos.com
+185.88.181.2 img100-741.xvideos.com
+185.88.181.2 img100-651.xvideos.com
+185.88.181.2 img100071.xvideos.com
+185.88.181.2 img100-171.xvideos.com
+185.88.181.2 img100-871.xvideos.com
+185.88.181.10 porn081.xvideos.com
+185.88.181.10 img100-091.xvideos.com
+185.88.181.10 img100091.xvideos.com
+185.88.181.5 img100-491.xvideos.com
+185.88.181.4 img100-322.xvideos.com
+185.88.181.4 admin-copyright.xvideos.com
+185.88.181.4 xvideos.com
+185.88.181.4 100.xvideos.com
+185.88.181.5 img100-900.xvideos.com
+185.88.181.7 porn900.xvideos.com	
+185.88.181.7 chat-private-connection510.xvideos.com
+185.88.181.7 img100-320.xvideos.com
+185.88.181.7 img100-830.xvideos.com
+185.88.181.7 porn440.xvideos.com
+185.88.181.9 img100-640.xvideos.com
+185.88.181.9 img100-250.xvideos.com
+185.88.181.9 img100060.xvideos.com
+185.88.181.4 img100-870.xvideos.com
+185.88.181.8 img100-280.xvideos.com
+185.88.181.6 img100-480.xvideos.com
+185.88.181.6 img100480.xvideos.com
+185.88.181.6 img100-190.xvideos.com
+185.88.181.6 xv90.xvideos.com
+185.88.181.6 img100-701.xvideos.com
+185.88.181.6 img100701.xvideos.com
+185.88.181.5 img100-011.xvideos.com
+185.88.181.4 img100-811.xvideos.com
+185.88.181.4 img100-121.xvideos.com
+185.88.181.4 img100-821.xvideos.com
+185.88.181.9 img100-931.xvideos.com
+185.88.181.3 img100-641.xvideos.com
+185.88.181.8 100-561.xvideos.com
+185.88.181.8 img100-861.xvideos.com
+185.88.181.8 porn371.xvideos.com
+185.88.181.8 img100-471.xvideos.com
+185.88.181.8 881.xvideos.com
+185.88.181.3 img100-291.xvideos.com
+185.88.181.9 www.ww1.xvideos.com
+185.88.181.5 302.xvideos.com
+185.88.181.5 img100-702.xvideos.com
+185.88.181.5 img100-902.xvideos.com
+185.88.181.5 752.xvideos.com
+185.88.181.5 l3.xvideos.com
+185.88.181.5 img100213.xvideos.com
+185.88.181.4 img100-610.xvideos.com
+185.88.181.8 porn810.xvideos.com
+185.88.181.8 img100-910.xvideos.com
+185.88.181.2 img100-020.xvideos.com
+185.88.181.2 img100430.xvideos.com
+185.88.181.2 porn630.xvideos.com
+185.88.181.2 img100-730.xvideos.com
+185.88.181.7 img100-930.xvideos.com
+185.88.181.10 xv150.xvideos.com
+185.88.181.10 img100-350.xvideos.com
+185.88.181.10 img100-680.xvideos.com
+185.88.181.8 porn880.xvideos.com
+185.88.181.11 img100-290.xvideos.com
+185.88.181.6 img100-101.xvideos.com
+185.88.181.6 img100-911.xvideos.com
+185.88.181.6 porn221.xvideos.com
+185.88.181.6 img100-521.xvideos.com
+185.88.181.6 621.xvideos.com
+185.88.181.6 img100-431.xvideos.com
+185.88.181.6 img100-151.xvideos.com
+185.88.181.9 img100-761.xvideos.com
+185.88.181.2 img100171.xvideos.com
+185.88.181.2 img100571.xvideos.com
+185.88.181.7 281.xvideos.com
+185.88.181.9 img100281.xvideos.com
+185.88.181.8 img100-381.xvideos.com
+185.88.181.8 img100-581.xvideos.com
+185.88.181.8 porn291.xvideos.com
+185.88.181.8 img100-791.xvideos.com
+185.88.181.8 img100-302.xvideos.com
+185.88.181.8 img100-502.xvideos.com
+185.88.181.8 porn712.xvideos.com
+185.88.181.8 img100-522.xvideos.com
+185.120.69.181 face-rec.xvideos.com
+185.120.69.181 reports.face-rec.xvideos.com
+185.120.69.181 images.face-rec.xvideos.com
+185.120.69.181 dev.face-rec.xvideos.com
+185.88.181.8 321.xvideos.com
+185.88.181.8 flashservice.xvideos.com
+185.88.181.8 info.xvideos.com
+185.88.181.8 jp.xvideos.com
+185.88.181.8 vid.xvideos.com
+185.88.181.8 l1.xvideos.com
+185.88.181.8 img100-321.xvideos.com
+185.88.181.8 upload.xvideos.com
+185.88.181.8 m.xvideos.com
+185.88.181.8 l3.xvideos.com
+185.88.181.11 flashembed.xvideos.com
+185.88.181.4 support.xvideos.com
+185.88.181.11 content.admin.xvideos.com
+178.79.246.102 porn.im.4e2e4000.8690770.x.xvideos.com
+87.248.203.19 porn.im.52d06500.20431419.x.xvideos.com
+178.79.244.61 porn.im.4e2e4000.6878056.x.xvideos.com
+178.79.253.40 porn.im.1f3369e2.938329.x.xvideos.com
+208.111.181.242 porn.im.18ccd858.370047.x.xvideos.com
+208.111.181.242 porn.im.187241ee.370047.x.xvideos.com
+185.88.181.11 hw.xvideos.com
+185.88.181.11 hls.xvideos.com
+185.88.181.11 532.xvideos.com
+185.88.181.11 345.xvideos.com
+185.88.181.11 de.xvideos.com
+185.88.181.11 video.xvideos.com
+185.88.181.11 admin-copyright.xvideos.com
+205.185.216.10 img-hw.xvideos.com
+209.197.3.84 static-hw.xvideos.com
+209.197.3.84 content.xvideos.com
+185.88.181.11 it.xvideos.com
+185.88.181.11 img100-269.xvideos.com
+185.88.181.11 752.xvideos.com
 178.79.213.56 porn1-im-1fd2d000-23453556-mp4.x.xvideos.com
-69.28.182.32 porn.im.4adccf00.13493185.x.xvideos.com
-178.79.221.39 porn.im.4e2e4000.6820386.x.xvideos.com
-178.79.221.33 porn.im.42578287.1846786.x.xvideos.com
+185.88.181.3 l2.xvideos.com
+185.88.181.3 egc.xvideos.com
+185.88.181.3 s.xvideos.com
+69.55.57.146 control.xvideos.com
+69.55.57.146 mail.support.xvideos.com
+87.248.218.40 download.im.294b5600.22393761.x.xvideos.com
+185.88.181.3 www.xvideos.com
+185.88.181.6 870.xvideos.com
+185.88.181.6 xvideos.com
+117.121.249.31 download.im.8d00ad00.7360419.x.xvideos.com
+117.121.249.31 download.im.8d00ad7a.63493.x.xvideos.com
+205.185.216.10 img-hw.xvideos.com
+209.197.3.84 static-hw.xvideos.com
+141.0.175.10 links.xvideos.com
+141.0.175.10 links.news.xvideos.com
 111.119.29.174 porn.im.31f35900.8438147.x.xvideos.com
-178.79.221.75 porn.im.42577300.5920448.x.xvideos.com
-178.79.221.22 download.im.8d00ad00.7360419.x.xvideos.com
-178.79.221.16 porn.im.4e2e4000.8399749.x.xvideos.com
+69.28.182.32 porn.im.4adccf00.13493185.x.xvideos.com
+178.79.246.10 porn.im.4e2e4000.6820386.x.xvideos.com
+117.121.249.11 porn.im.42578287.1846786.x.xvideos.com
+117.121.249.197 porn.im.42577300.5920448.x.xvideos.com
+178.79.245.171 porn.im.4e2e4000.8399749.x.xvideos.com
 141.0.171.198 chat-group-test-connection.xvideos.com
 141.0.168.248 chat-group-test-master.xvideos.com
-185.88.181.8 fr.xvideos.com l16.xvideos.com
-8.252.22.115 img-l3.xvideos.com
-68.232.34.19 img-egc.xvideos.com
-8.253.207.243 img-l3-ssl.xvideos.com
+185.88.181.6 fr.xvideos.com
+185.88.181.6 l16.xvideos.com
+8.252.0.251 img-l3-ssl.xvideos.com
 69.55.57.147 trade-admin.xvideos.com
+93.184.215.19 img-egc.xvideos.com
+8.253.80.115 img-l3.xvideos.com
 204.8.234.243 cams.xvideos.com
-209.197.3.84 img-hw.xvideos.com static-hw.xvideos.com content.xvideos.com
+185.88.181.6 l2.xvideos.com
+89.187.163.93 cdn77-pic.xvideos-cdn.com
+89.187.163.93 cdn77-vid.xvideos-cdn.com
+209.197.3.84 hls-hw.xvideos-cdn.com
+8.240.177.123 hls1-l3.xvideos-cdn.com
+8.240.177.123 hls2-l3.xvideos-cdn.com
+8.240.177.123 hls3-l3.xvideos-cdn.com
+8.240.177.123 hls4-l3.xvideos-cdn.com
+117.121.249.33 images-llnw.xvideos-cdn.com
+213.174.135.2 img-ah.xvideos-cdn.com
+152.195.62.8 img-egc.xvideos-cdn.com
+205.185.216.10 img-hw.xvideos-cdn.com
+8.240.36.123 img-l3.xvideos-cdn.com
+205.185.216.10 premiumvideo-hw.xvideos-cdn.com
+8.240.177.123 premiumvideo-l3.xvideos-cdn.com
+69.55.53.171 static.xvideos-cdn.com
+152.195.62.10 static-egc.xvideos-cdn.com
+209.197.3.84 static-hw.xvideos-cdn.com
+8.240.177.123 static-l3.xvideos-cdn.com
+69.55.53.168 static-ss.xvideos-cdn.com
+152.195.62.8 vid-egc.xvideos-cdn.com
+8.240.177.123 vid1-l3.xvideos-cdn.com
+8.240.177.123 vid2-l3.xvideos-cdn.com
+8.240.177.123 vid3-l3.xvideos-cdn.com
+8.252.55.123 vid4-l3.xvideos-cdn.com
+89.187.163.114 video-cdn77-premium.xvideos-cdn.com
+209.197.3.84 video-hw.xvideos-cdn.com 
+209.197.3.84 video-hw.xvideos-cdn.com
 
 # [paheal.net]
 208.97.151.195 paheal.net www.paheal.net
@@ -404,12 +794,24 @@
 205.185.208.154 s9v7j7a4.ssl.hwcdn.net
 
 # [sankakucomplex.com]
-208.100.24.252 sankakucomplex.com www.sankakucomplex.com
-208.100.27.32 chan.sankakucomplex.com idol.sankakucomplex.com
-208.100.47.78 images.sankakucomplex.com img3.sankakucomplex.com img4.sankakucomplex.com img.sankakucomplex.com
-208.100.47.75 data.sankakucomplex.com charts.sankakucomplex.com extra.sankakucomplex.com
-208.100.24.246 c.sankakucomplex.com i.sankakucomplex.com cstats.sankakucomplex.com
-208.100.24.254 cs.sankakucomplex.com is.sankakucomplex.com beta.sankakucomplex.com
+208.100.24.252 sankakucomplex.com
+208.100.27.32 chan.sankakucomplex.com
+208.100.47.78 images.sankakucomplex.com
+208.100.47.75 data.sankakucomplex.com
+208.100.24.246 c.sankakucomplex.com
+208.100.24.254 cs.sankakucomplex.com
+208.100.24.252 www.sankakucomplex.com
+208.100.27.32 idol.sankakucomplex.com
+208.100.47.78 img3.sankakucomplex.com
+208.100.47.78 img4.sankakucomplex.com
+208.100.47.78 img.sankakucomplex.com
+208.100.47.75 charts.sankakucomplex.com
+208.100.47.75 extra.sankakucomplex.com
+208.100.24.246 i.sankakucomplex.com
+208.100.24.246 cstats.sankakucomplex.com
+208.100.24.254 is.sankakucomplex.com
+208.100.24.254 beta.sankakucomplex.com
+208.100.24.254 s.sankakucomplex.com
 
 # [spankbang.com]
 104.20.41.98 static.spankbang.com a-eng.spankbang.com m.spankbang.com spankbang.com www.spankbang.com cdnthumb3.spankbang.com cdnthumb1.spankbang.com cdnthumb.spankbang.com cdnthumb2.spankbang.com id.spankbang.com cdnthumb3.spankbang.com cdnthumb4.spankbang.com cdnthumb5.spankbang.com
@@ -520,41 +922,39 @@
 158.69.228.132 heaven99.spankbang.com
 
 # [dmm.com]
-103.254.144.94 stat.i3.dmm.com
-202.6.247.84 mvno.dmm.com
-203.209.151.65 akiba.dmm-make.com
-203.209.146.206 affiliate.dmm.com
-103.254.146.66 book.dmm.com
-148.251.158.116 display.dmm.com
+13.32.207.52 stat.i3.dmm.com
+52.85.144.49 mvno.dmm.com
+13.231.53.224 akiba.dmm-make.com
+157.112.86.108 affiliate.dmm.com
+52.69.221.61 book.dmm.com
+147.75.95.74 display.dmm.com
 202.6.247.195 dlsoft.dmm.com
-103.254.146.44 yell.dmm.com
 202.6.247.168 chariloto.dmm.com
-203.209.146.79 recruit.dmm.com
-157.112.85.174 www.dmm.com
-203.209.151.110 make.dmm.com
+157.112.93.16 recruit.dmm.com
+13.249.37.228 www.dmm.com
+13.249.39.65 make.dmm.com
 202.6.247.179 help.dmm.com
-203.209.151.42 media.dmm-make.com
+13.32.182.118 media.dmm-make.com
 103.254.146.118 event.dmm.com
-103.254.144.35 make-cs.dmm.com
 202.6.246.222 ad.dmm.com
-202.6.245.122 pics.dmm.com
-203.180.216.234 fx.dmm.com
-203.209.152.98 dmm.com
+202.6.246.10 pics.dmm.com
+104.121.101.160 fx.dmm.com
+13.248.196.236 dmm.com
 43.255.40.113 p-town.dmm.com
-43.255.42.79 vr-theater.dmm.com
 202.6.245.205 kouenirai.dmm.com
 202.6.245.128 lounge.dmm.com
-202.6.245.122 p.dmm.com
-103.254.145.236 robots.dmm.com
-103.254.146.85 eikaiwa.dmm.com
-203.209.147.170 mobile.dmm.com
-43.255.42.131 okan.dmm.com
+202.6.247.66 p.dmm.com
+157.112.91.141 robots.dmm.com
+54.249.32.53 eikaiwa.dmm.com
+13.32.196.158 mobile.dmm.com
 43.255.42.71 hikari.dmm.com
 
 # [dmm.co.jp]
-202.6.247.66 pics.dmm.co.jp p.dmm.co.jp pics.dmm.com
-202.6.246.32 dmm.co.jp actress.dmm.co.jp
-157.112.85.173 www.dmm.co.jp
+202.6.245.93 pics.dmm.co.jp p.dmm.co.jp
+202.6.246.10 pics.dmm.com
+13.248.196.236 dmm.co.jp
+13.249.38.162 actress.dmm.co.jp
+99.86.231.121 www.dmm.co.jp
 103.254.146.221 sample9.dmm.co.jp
 202.6.247.196 dlsoft.dmm.co.jp
 43.255.40.206 games.dmm.co.jp games.dmm.com
@@ -566,9 +966,14 @@
 104.18.54.249 javlib.com www.javlib.com
 
 # [yande.re]
-188.165.205.120 yande.re www.yande.re
-51.77.247.63 files.yande.re
-188.165.205.120 assets.yande.re
+198.98.54.92 assets.yande.re files.yande.re www.yande.re yuno.yande.re yande.re ayase.yande.re direct.yande.re webmaster.yande.re
+72.11.139.6 generic.yande.re imouto.yande.re
+72.11.139.7 minecraft.yande.re
+158.69.253.199 kirino.yande.re
+72.11.139.9 gamepop.yande.re
+72.11.139.5 tlwiki.yande.re
+72.11.139.8 aegis.yande.re
+72.11.139.4 iqdb.yande.re
 
 # [konachan.com]
 5.178.68.69 konachan.com www.konachan.com
@@ -948,6 +1353,12 @@
 104.25.47.115 javhub.net www.javhub.net
 104.26.13.156 image.javhub.net ja.javhub.net
 
+# [javhub.co]
+172.67.70.74 www.javsub.co cpanel.javsub.co
+104.26.12.38 mail.javsub.co webdisk.javsub.co cpcontacts.javsub.co
+104.26.13.38 javsub.co cpcalendars.javsub.co webmail.javsub.co
+45.148.120.2 dc-6ea4ce2ce839.javsub.co
+
 # [javmost.com]
 104.27.72.17 javmost.com www5.javmost.com
 
@@ -960,7 +1371,7 @@
 
 # [efukt.com]
 146.148.105.239 efukt.com www.efukt.com
-104.31.84.200 static.efukt.com 
+104.31.84.200 static.efukt.com
 172.67.152.61 media.efukt.com
 151.139.128.11 mediav.efukt.com
 
@@ -968,9 +1379,10 @@
 104.18.54.65 mangadex.com www.mangadex.com
 
 # [hanime.tv]
-104.24.30.59 uploads.hanime.tv ark.hanime.tv cdn.hanime.tv search.hanime.tv
-104.24.30.59 oberon.hanime.tv m.hanime.tv tapi.hanime.tv htv3.hanime.tv
-172.64.164.6 members.hanime.tv www.hanime.tv player.hanime.tv player2.hanime.tv
+104.24.30.59 uploads.hanime.tv ark.hanime.tv cdn.hanime.tv search.hanime.tv hr.hanime.tv
+104.24.30.59 oberon.hanime.tv m.hanime.tv tapi.hanime.tv htv3.hanime.tv hw.hanime.tv
+172.64.166.6 weeb.hanime.tv
+172.64.167.6 members.hanime.tv www.hanime.tv player.hanime.tv player2.hanime.tv player3.hanime.tv
 104.28.24.161 search.htv-services.com uploader.htv-services.com
 104.31.95.124 hanime.tv
 104.28.8.205 search.freeanimehentai.net
@@ -1231,7 +1643,7 @@
 91.212.150.157 katcr.co www.katcr.co
 
 # [1337x.to]
-104.31.88.65 1337x.to www.1337x.to
+172.67.141.188 1337x.to www.1337x.to
 
 # [yts.lt]
 104.25.135.117 yts.lt www.yts.lt
@@ -1255,7 +1667,9 @@
 104.31.82.250 rarbgaccess.org www.rarbgaccess.org
 
 # [rmz.cr]
-104.31.18.30 rmz.cr www.rmz.cr
+172.67.135.40 rmz.cr
+104.28.18.114 www.rmz.cr
+162.223.88.69 dc-b0ea2b5e9b13.rmz.cr
 
 # [waxtube.com]
 104.28.29.213 waxtube.com www.waxtube.com
@@ -1893,9 +2307,10 @@
 209.133.197.139 members.actionjav.com
 
 # [mangareader.net]
-185.85.189.58 mangareader.net www.mangareader.net
-104.20.140.9 s1.mangareader.net s2.mangareader.net s3.mangareader.net s4.mangareader.net s5.mangareader.net i10.mangareader.net i9.mangareader.net
-104.20.140.9 i1.mangareader.net i2.mangareader.net i3.mangareader.net i4.mangareader.net i5.mangareader.net i6.mangareader.net i7.mangareader.net i8.mangareader.net
+93.123.73.162 mangareader.net
+172.67.28.55 www.mangareader.net
+104.22.40.215 s1.mangareader.net s2.mangareader.net s3.mangareader.net s4.mangareader.net s5.mangareader.net i10.mangareader.net i9.mangareader.net
+104.22.40.215 i1.mangareader.net i2.mangareader.net i3.mangareader.net i4.mangareader.net i5.mangareader.net i6.mangareader.net i7.mangareader.net i8.mangareader.net
 
 # [sexasian18.com]
 192.161.187.200 sexasian18.com www.sexasian18.com
@@ -2046,11 +2461,11 @@
 104.31.82.117 hentai-for.me www.hentai-for.me en.hentai-for.me
 
 # [onlyfans.com]
-34.225.92.112 onlyfans.com
-54.192.209.63 cdn2.onlyfans.com
-54.192.209.58 public.onlyfans.com
+52.73.12.142 onlyfans.com
+99.84.222.51 cdn2.onlyfans.com
+99.84.222.127 public.onlyfans.com
 34.206.102.97 convert.onlyfans.com
-34.200.63.198 www.onlyfans.com
+3.91.129.170 www.onlyfans.com
 18.232.46.215 monit.onlyfans.com
 34.235.250.15 blog.onlyfans.com
 52.21.48.13 live4.onlyfans.com
@@ -2074,7 +2489,7 @@
 100.26.128.8 live0.onlyfans.com
 54.156.103.148 store.onlyfans.com
 107.23.50.158 autoconfig.onlyfans.com
-104.16.206.86 email.onlyfans.com
+104.16.207.86 email.onlyfans.com
 52.201.203.27 convert3.onlyfans.com
 52.65.72.219 stream0-dc3.onlyfans.com
 52.1.69.0 live1.onlyfans.com
@@ -2087,26 +2502,21 @@
 107.23.50.158 mail.onlyfans.com
 54.209.172.97 pg.onlyfans.com
 3.214.123.128 convert1.onlyfans.com
-18.233.73.227 stream1.onlyfans.com media2.onlyfans.com
+18.233.73.227 stream1.onlyfans.com
 34.196.112.45 stream2.onlyfans.com
-3.126.84.208 p2p2.onlyfans.com media3.onlyfans.com
+3.126.84.208 p2p2.onlyfans.com
 13.210.118.39 route0-dc3.onlyfans.com
 13.54.154.194 live0-dc3.onlyfans.com
 13.237.183.173 live1-dc3.onlyfans.com
 3.24.196.79 stream1-dc3.onlyfans.com
-3.12.97.53 route0-dc4.onlyfans.com
-3.22.163.178 stream0-dc4.onlyfans.com
-3.20.197.178 live1-dc4.onlyfans.com
-3.20.26.249 stream1-dc4.onlyfans.com media.onlyfans.com de.media.onlyfans.com sg.media.onlyfans.com uk.media.onlyfans.com main.media.onlyfans.com
-3.209.209.140 thumbs.media.onlyfans.com us.media.onlyfans.com
-54.175.88.73 netdata.onlyfans.com static.onlyfans.com webrtc.onlyfans.com upload.onlyfans.com stage.onlyfans.com bug.onlyfans.com
-34.195.42.125 personal.onlyfans.com cdn.onlyfans.com
-52.85.32.14 static.cdn.onlyfans.com new.onlyfans.com xxx.onlyfans.com soft-notify.onlyfans.com
+3.209.209.140 thumbs.media.onlyfans.com
+54.175.88.73 netdata.onlyfans.com
+34.195.42.125 personal.onlyfans.com
+13.32.207.39 static.cdn.onlyfans.com
 149.72.128.209 o1.ptr8059.onlyfans.com
 3.209.209.140 thumbs.public.onlyfans.com
-54.147.59.39 join.onlyfans.com html5.personal.onlyfans.com hashtag.personal.onlyfans.com de.upload.onlyfans.com us.upload.onlyfans.com sg.upload.onlyfans.com uk.convert.onlyfans.com de.convert.onlyfans.com ca2.convert.onlyfans.com sg.convert.onlyfans.com us.convert.onlyfans.com ca2.upload.onlyfans.com ca.convert.onlyfans.com ca.upload.onlyfans.com uk.upload.onlyfans.com ca.media.onlyfans.com ca2.media.onlyfans.com
-3.132.177.8 live0-dc4.onlyfans.com
-52.85.32.66 stream.onlyfans.com stats.onlyfans.com tracking.onlyfans.com
+54.147.59.39 join.onlyfans.com
+99.84.181.119 stream.onlyfans.com
 
 # [beeg.com]
 192.243.54.98 beeg.com www.beeg.com
@@ -2116,6 +2526,8 @@
 
 # [hentaihand.com]
 104.26.6.153 hentaihand.com www.hentaihand.com
+104.25.177.29 cdn.hentaihand.com
+64.227.54.238 cdn3.hentaihand.com
 
 # [verystream.com]
 104.20.131.131 verystream.com www.verystream.com
@@ -2501,11 +2913,6 @@
 104.26.8.126 opensubtitles.org www.opensubtitles.org static.opensubtitles.org blog.opensubtitles.org dl.opensubtitles.org
 104.26.9.126 forum.opensubtitles.org ads2.opensubtitles.org trac.opensubtitles.org api.opensubtitles.org
 
-# [pahe.in]
-104.27.133.141 pahe.in lawas.pahe.in www.lawas.pahe.in panel.pahe.in www.panel.pahe.in
-172.67.192.118 www.pahe.in drive.pahe.in p.pahe.in link.pahe.in
-136.243.46.151 e5.pahe.in file.pahe.in ckklg.pahe.in
-
 # [anonymouse.org]
 193.200.150.82 anonymouse.org www.anonymouse.org
 
@@ -2594,10 +3001,6 @@
 # [leetcode.com]
 134.209.142.218 leetcode.com www.leetcode.com
 
-# [pahe.ph]
-172.67.186.112 pahe.ph
-104.31.74.158 www.pahe.ph
-
 # [javgiga.com]
 104.31.64.24 javgiga.com www.javgiga.com
 
@@ -2619,7 +3022,7 @@
 216.118.89.130 iafd.com www.iafd.com
 
 # [crackwatch.com]
-104.26.12.70 crackwatch.com www.crackwatch.com b2.crackwatch.com cron.crackwatch.com
+104.26.12.70 crackwatch.com www.crackwatch.com b2.crackwatch.com cron.crackwatch.com s3.crackwatch.com
 
 # [lookmovie.ag]
 104.31.1.179 lookmovie.ag www.lookmovie.ag
@@ -3019,3 +3422,60 @@
 172.67.129.5 3xplanet.com www.img.3xplanet.com www.update.3xplanet.com cpcalendars.3xplanet.com cpcontacts.3xplanet.com mail.3xplanet.com webdisk.3xplanet.com quangcaotanhung.3xplanet.com www.quangcaotanhung.3xplanet.com www.free.3xplanet.com www.download.3xplanet.com www.new.3xplanet.com www.recover.3xplanet.com www.cpanel.3xplanet.com
 104.28.23.16 img.3xplanet.com cpanel.3xplanet.com new.3xplanet.com recover.3xplanet.com dc-b3043972.3xplanet.com
 104.28.22.16 www.3xplanet.com update.3xplanet.com webmail.3xplanet.com free.3xplanet.com download.3xplanet.com
+
+# [myflixer.to]
+104.28.12.102 myflixer.to
+172.67.134.99 www.myflixer.to
+104.28.13.102 img.myflixer.to
+
+# [ronaldo7.net]
+104.27.206.92 ronaldo7.net www.ronaldo7.net ns1.ronaldo7.net ns2.ronaldo7.net
+
+# [nbastreams.xyz]
+172.64.130.28 nbastreams.xyz www.nbastreams.xyz faq.nbastreams.xyz tra.nbastreams.xyz gtra.nbastreams.xyz jash.nbastreams.xyz lop.nbastreams.xyz kilo.nbastreams.xyz trae.nbastreams.xyz
+
+# [girlswithsurprise.home.blog]
+192.0.78.31 girlswithsurprise.home.blog
+192.0.78.30 www.girlswithsurprise.home.blog
+
+# [tfp.is]
+104.24.114.4 tfp.is www.tfp.is
+
+# [nanime.yt]
+172.67.133.164 nanime.yt
+104.28.19.90 www.anime.yt
+
+# [shooshtime.com}
+173.239.3.52 www.shooshtime.com secret.shooshtime.com stream.shooshtime.com content.shooshtime.com download.shooshtime.com sfw.shooshtime.com forums.shooshtime.com thumbs-01.shooshtime.com media.secret.shooshtime.com beta.shooshtime.com shooshtime.com
+199.167.66.1 videostreams.shooshtime.com
+54.236.206.131 s0zfs.shooshtime.com
+
+# [downloadgameps3.com]
+104.24.104.16 downloadgameps3.com www.downloadgameps3.com
+
+# [bfst.xyz]
+104.27.189.18 bfst.xyz www.bfst.xyz
+
+# [binance.com]
+13.224.7.78 binance.com www.binance.com
+
+# [peacetv.tv]
+95.131.68.14 peacetv.tv www.peacetv.tv mail.peacetv.tv ftp.peacetv.tv
+
+# [duga.jp]
+133.242.97.202 duga.jp www.duga.jp
+59.106.25.10 pic.duga.jp flv.duga.jp
+59.106.227.92 img.duga.jp
+59.106.25.21 affsample.duga.jp
+
+# [fleshed.com]
+104.27.181.38 fleshed.com www.fleshed.com
+172.67.215.81 media.fleshed.com
+151.139.128.11 mediav.fleshed.com
+
+# [jkforum.net]
+172.67.19.226 jkforum.net
+130.211.31.66 pg2dhpc3p5ec22g3.jkforum.net
+167.89.17.90 o1.mm.jkforum.net
+35.188.24.144 v.jkforum.net
+104.20.192.74 www.jkforum.net
