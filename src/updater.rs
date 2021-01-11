@@ -1,17 +1,27 @@
 use crate::error::ErrorKind;
 use crate::os::{HOSTS_BACKUP_PATH, HOSTS_PATH};
 use crate::parser::{parse_from_file, write_to_file};
-use crate::{CURRENT_VERSION, LATEST_VERSION_URL, UPDATE_URL};
+use crate::{CURRENT_VERSION, LATEST_VERSION_URL, UPDATE_URL, HOSTS_HEADER, DEFAULT_HOSTS};
 use serde::Deserialize;
 use std::env::{current_dir, current_exe};
 use std::fs;
-use std::io::Read;
+use std::io::{self, Read};
 use std::io::Write as _;
 use std::path::Path;
 
 pub fn is_installed() -> bool {
     // Maybe there are another condition that can be checked
     is_backed()
+}
+
+pub fn hosts_exists() -> bool {
+    Path::new(HOSTS_PATH).exists()
+}
+
+pub fn create_default_hosts() -> io::Result<()> {
+    let mut file = fs::File::create(HOSTS_PATH)?;
+    file.write_all(format!("{}\n{}", HOSTS_HEADER, DEFAULT_HOSTS).as_bytes())?;
+    Ok(())
 }
 
 pub fn remove_temp_file() {

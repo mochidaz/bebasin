@@ -27,6 +27,7 @@ const LATEST_VERSION_URL: &str =
 const UPDATE_URL: &str = "https://api.github.com/repos/bebasid/bebasin/releases/latest";
 const HOSTS_HEADER: &str = include_str!("../misc/header-hosts");
 const HOSTS_BEBASIN: &str = include_str!("../misc/hosts");
+const DEFAULT_HOSTS: &str = include_str!("../misc/default-hosts");
 
 fn main() {
     updater::remove_temp_file();

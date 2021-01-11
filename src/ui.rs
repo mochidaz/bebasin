@@ -8,7 +8,7 @@ use cursive::views::{Button, Dialog, DummyView, LinearLayout, TextView, EditView
 use cursive::Cursive;
 
 use crate::helpers::AppendableMap;
-use crate::updater::{backup, is_backed, is_installed};
+use crate::updater::{backup, is_backed, is_installed, hosts_exists, create_default_hosts};
 use std::fs;
 
 fn clear_layer(cursive: &mut Cursive) {
@@ -27,16 +27,46 @@ fn error(cursive: &mut Cursive, err: ErrorKind) {
     );
 }
 
-fn install(cursive: &mut Cursive) {
-    let box_layout = Dialog::text("Parsing the file...").title("Loading...");
-
+fn create_default_hosts_ui(cursive: &mut Cursive) {
+    let box_layout = Dialog::text("No hosts file found. Bebasin needs it in order to create
+    backup. Allow bebasin create default hosts file? (If no, you can create it manually later)")
+    .title("Notice")
+    .button("Yes", move |cursive| {
+        cursive.pop_layer();
+        create_default_hosts();
+        let notice = Dialog::text("Default hosts file has been successfully created. 
+        Press install or install custom again to install bebasin/custom hosts file")
+        .title("Success")
+        .button("Ok", move |cursive| {
+            cursive.pop_layer();
+        });
+        cursive.add_layer(notice);
+    })
+    .button("No", move |cursive| {
+        cursive.pop_layer();
+    });
     cursive.add_layer(box_layout);
+}
+
+fn install(cursive: &mut Cursive) {
+
+    if !hosts_exists() {
+        create_default_hosts_ui(cursive);
+    }
+
+    else {
+        let box_layout = Dialog::text("Parsing the file...").title("Loading...");
+        cursive.add_layer(box_layout);
+    }
 
     if !is_backed() {
         let backup_result = backup();
         if backup_result.is_err() {
-            error(cursive, backup_result.err().unwrap());
-            return;
+            if !hosts_exists() {}
+            else {
+                error(cursive, backup_result.err().unwrap());
+                return;
+            }
         }
     }
 
@@ -89,12 +119,18 @@ fn install(cursive: &mut Cursive) {
                     cursive.add_layer(box_layout);
                 }
                 Err(err) => {
-                    error(cursive, err);
+                    if !hosts_exists(){}
+                    else {
+                        error(cursive, err);
+                    }
                 }
             };
         }
         Err(err) => {
-            error(cursive, err);
+            if !hosts_exists(){}
+            else {
+                error(cursive, err);
+            }
         }
     };
 }
@@ -159,25 +195,32 @@ fn open_browser(cursive: &mut Cursive, url: &str) {
     }
 }
 
-
 fn install_custom_ui(cursive: &mut Cursive) {
-    let box_layout = Dialog::new()
-    .title("Your custom hosts path")
-    .content(
-        EditView::new()
-            .on_submit(install_custom)
-            .with_name("custom_hosts")
-            .fixed_width(20),
-    )
-    .button("Ok", |x|{
-        let custom_hosts = x
-            .call_on_name("custom_hosts", |view: &mut EditView| {
-                view.get_content()
-            })
-            .unwrap();
-        install_custom(x, custom_hosts.as_str());
-    });
-    cursive.add_layer(box_layout);
+
+    if !hosts_exists() {
+        create_default_hosts_ui(cursive);
+    }
+
+    else {
+
+        let box_layout = Dialog::new()
+        .title("Your custom hosts path")
+        .content(
+            EditView::new()
+                .on_submit(install_custom)
+                .with_name("custom_hosts")
+                .fixed_width(20),
+        )
+        .button("Ok", |x|{
+            let custom_hosts = x
+                .call_on_name("custom_hosts", |view: &mut EditView| {
+                    view.get_content()
+                })
+                .unwrap();
+            install_custom(x, custom_hosts.as_str());
+        });
+        cursive.add_layer(box_layout);
+    }
 }
 
 fn install_custom(cursive: &mut Cursive, path: &str) {
