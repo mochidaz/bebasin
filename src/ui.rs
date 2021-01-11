@@ -3,7 +3,8 @@ use crate::os::{HOSTS_BACKUP_PATH, HOSTS_PATH};
 use crate::parser::{parse_from_file, parse_from_str, write_to_file};
 use crate::{updater, CURRENT_VERSION, HOSTS_BEBASIN, HOSTS_HEADER, REPOSITORY_URL};
 
-use cursive::views::{Button, Dialog, DummyView, LinearLayout, TextView};
+use cursive::traits::*;
+use cursive::views::{Button, Dialog, DummyView, LinearLayout, TextView, EditView};
 use cursive::Cursive;
 
 use crate::helpers::AppendableMap;
@@ -158,6 +159,100 @@ fn open_browser(cursive: &mut Cursive, url: &str) {
     }
 }
 
+
+fn install_custom_ui(cursive: &mut Cursive) {
+    let box_layout = Dialog::new()
+    .title("Your custom hosts path")
+    .content(
+        EditView::new()
+            .on_submit(install_custom)
+            .with_name("custom_hosts")
+            .fixed_width(20),
+    )
+    .button("Ok", |x|{
+        let custom_hosts = x
+            .call_on_name("custom_hosts", |view: &mut EditView| {
+                view.get_content()
+            })
+            .unwrap();
+        install_custom(x, custom_hosts.as_str());
+    });
+    cursive.add_layer(box_layout);
+}
+
+fn install_custom(cursive: &mut Cursive, path: &str) {
+    use std::io::Read;
+    let mut f = fs::File::open(path).expect("Unable to open file");
+    let mut contents = String::new();
+    f.read_to_string(&mut contents).expect("Error");
+    let hosts_custom = contents.as_str();
+
+    if !is_backed() {
+        let backup_result = backup();
+        if backup_result.is_err() {
+            error(cursive, backup_result.err().unwrap());
+            return;
+        }
+    }
+    match parse_from_str(hosts_custom) {
+        Ok(mut hosts_custom) => {
+            match parse_from_file(HOSTS_BACKUP_PATH) {
+                Ok(hosts_backup) => {
+                    hosts_custom.append(hosts_backup);
+                    cursive.pop_layer();
+
+                    let box_layout = Dialog::text(
+                        "Are you sure you want to\n\
+                    merge your hosts file with\n\
+                    your custom hosts?",
+                    )
+                        .title("Confirmation")
+                        .button("Confirm", move |cursive| {
+                            match write_to_file(HOSTS_PATH, &hosts_custom, HOSTS_HEADER) {
+                                Err(err) => {
+                                    cursive.add_layer(
+                                        Dialog::text(err.to_string()).title("Error").button(
+                                            "Ok",
+                                            |cursive| {
+                                                cursive.pop_layer();
+                                                cursive.pop_layer();
+                                            },
+                                        ),
+                                    );
+                                }
+                                _ => {
+                                    cursive.add_layer(
+                                        Dialog::text(
+                                            "The hosts file has been updated,\n\
+                        Please restart your machine",
+                                        )
+                                            .title("Done")
+                                            .button("Ok", |cursive| {
+                                                // Re-create the main menu
+                                                clear_layer(cursive);
+                                                main(cursive);
+                                            }),
+                                    );
+                                }
+                            };
+                        })
+                        .button("Cancel", |cursive| {
+                            cursive.pop_layer();
+                        });
+
+                    cursive.add_layer(box_layout);
+                }
+                Err(err) => {
+                    error(cursive, err);
+                }
+            };
+        }
+        Err(err) => {
+            error(cursive, err);
+        }
+    };
+}
+
 fn update(cursive: &mut Cursive) {
     let mut updater_instance = updater::Updater::new();
 
@@ -216,6 +311,7 @@ pub fn main(cursive: &mut Cursive) {
         menu_buttons = menu_buttons.child(Button::new("Uninstall", uninstall));
     } else {
         menu_buttons = menu_buttons.child(Button::new("Install", install));
+        menu_buttons = menu_buttons.child(Button::new("Install Custom", install_custom_ui));
     }
 
     menu_buttons = menu_buttons
